@@ -1,0 +1,2 @@
+https://github.com/bwaldvogel/base91/blob/main/src/main/java/de/bwaldvogel/base91/Base91.java
+https://www.npmjs.com/package/gzip-js
