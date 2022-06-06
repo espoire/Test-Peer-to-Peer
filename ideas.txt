@@ -1,0 +1,223 @@
+Game Flow
+  Game is broken into stages. Some stages are top-down 2D, some are side-scrolling platformers. All feature fantasy sci-fi combat.
+  Each stage features several "floors", followed by a boss encounter.
+  Each floor contains several encounters.
+  After each floor is a rest / checkpoint.
+
+Depleting Resources
+  Most character classes have some kind of limited resource which depletes during encounters.
+  Some one-off power ups will patially refill these resources.
+  Rests partially refill these resources.
+
+Rests / Checkpoints
+  When reaching a checkpoint, the party's remaining resource percentage will be scored on a scale from 0% to 100%, but capped to the range 50% to 100%.
+  The highest score achieved is saved on a per-character per-checkpoint basis.
+  A substantial XP bonus will be awarded to each character based on how much their high-score increases.
+  A party may start/restart a game from any checkpoint reached by any member of the party.
+  When restarting in this way, the party's depletable resources will start out at a percentage based on the lowest high score for that checkpoint among the players in the party.
+  A player who hasn't yet reached that checkpoint counts as a score slightly below the minimum possible score. 40%
+
+Boss Encounters
+  Uhh, they're boss encounters.
+  Similarly to a regular checkpoint, all players present permanently unlock the next Stage.
+  Substantial XP and loot bonus per character on their first time defeating each boss.
+
+Classes
+  Hunter
+    General
+      Primarily melee, but can eventually use some guns.
+      Focus on kiting or blocking enemy attacks, timing, using hit-stagger to control mobs.
+      HP partially refills after each encounter, but max HP decreases in proportion to the HP regained this way.
+      Max HP is considered a depletable resource.
+    Melee Weapon Types
+      Saber
+        Short range single target melee weapon.
+        High damage / DPS.
+      Dagger
+        Short range single target melee weapon.
+        Faster attack speed and recovery, but slightly lower DPS.
+        (Some daggers trade very low fliching for higher DPS.)
+      Sword
+        Medium range, AoE strike.
+        Slower, and lower DPS per target.
+      Spear
+        Longer range single target melee weapon.
+        Slightly lower DPS.
+      Poleaxe
+        Longer range, AoE strike.
+        Much lower DPS per target.
+  Ranger
+    General
+      Primarily ranged, but can eventually use some melee weapons.
+      Focus on careful aim and skill-shots. Must conserve ammo, and must judge the appropriate time to reload.
+      The Ranger has a depletable resource: ammo Reloads.
+      Starting the Reload channel consumes 1 Reload, and refills an accelerating percentage of the ammo on all equipped guns. Interrupted if damaged. Cannot move or fight while reloading.
+      HP does not refill.
+      HP is considered a depletable resource.
+    Gun Weapon Types
+      Each gun has an ammo limit, and cannot be fired when it is out of ammo.
+      These per-gun ammo amounts refill after each encounter.
+      Handgun
+        High ammo, low damage, single target, aim assist.
+        Easy to use, but low DPS.
+        Damage falls off with distance above a medium limit.
+        Good for making enemies flinch, which can be a good way to support the party.
+      Sniper
+        Low ammo.
+        High damage beam for a split second.
+        Does more damage the longer the same target is in the beam.
+        Blocked by players.
+      Arc Caster
+        Low ammo.
+        Fires a wide wave of plasma.
+        Targets hit cast a shadow.
+        Damage falls off with distance above a short limit.
+        Damage does NOT scale with how much of the arc a single enemy absorbs.
+      Chain Gun
+        High ammo, higher DPS, single target. Some cone spread.
+        Good flinching.
+        Damage falls off with distance above a medium limit.
+        Quickly depletes ammo.
+        Lower damage per full-ammo-reload than a Handgun.
+  Force
+    General
+      Primary magic-user, but can eventually use some weapons.
+      Equips multiple spells, and must remember the rune sequence to cast them.
+      Spells cost less MP if it has been longer since that specific spell was used.
+      Substantially higher MP than an equivalent Hunter or Ranger.
+      Fewer weapon equipment slots than other classes.
+      Lower HP than other classes, but resistance to larger AoE attacks.
+    Magic Weapon Types
+      For the most part, Forces don't much use weapons.
+      Humans are more able to use weapons than Elves are.
+      Humans gain slightly increased MP based on the maximum number of spells equipped from the same element.
+        Empty spell slots are considered to be the same element as ALL elements.
+      Elves gain slightly increased MP for each different element equipped.
+    Spells
+      Fire
+        May inflict burning -- and always does so against enemies for whom Fire is their lowest resistance.
+        Generally higher DPS, but has FRIENDLY FIRE
+        Caster is breifly immune to fire at the moment of casting.
+        Firebolt
+          Long range, aim assist, hits a short AoE line past the initial target.
+        Flamestrike
+          AoE rises from the ground beneath a target.
+        Fireball
+          Similar to firebolt, but strikes a large circle around the point of impact.
+        Inferno
+          Hits ALL targets except the caster. Reduced damage to players, and fully prevented by blocking.
+      Lightning
+        Accumulates static charge per hit, which has a chance to inflict a long duration stun based on the amount accumulated.
+        Accumulates faster on enemies weak to Lightning.
+        Deals increased damage to flying/aquatic/mechanical enemies.
+        Mostly auto-aim spells.
+        Lightning Bolt
+          Sky bolt. Instant, always hits. Can hit multiple enemies if above/below.
+        Chain Lightning
+          Instant, strikes multiple targets. Limited total arc distance after the initial target.
+        ???
+      Ice
+        Accumulates chill which will freeze upon reaching a certain total.
+        No friendly fire, but allies block the attacks.
+        Deals reduced damage and chill to aquatic targets and mechanical enemies.
+        Frozen flying enemies take fall damage.
+        Ice Beam
+          Line from player. Channel. Deals cold damage to the nearest target within range and then stops.
+          Pierces frozen targets.
+        Frost Nova
+          Quick, high-chill, but lower DPS.
+          Circle centered on the caster.
+        Hail
+          Can be equipped as either a cone from the player, or as a sky-falling circle.
+          Sprays bolts, which deal steady cold damage per second to everything being hit.
+          Non-frozen targets block the spray.
+        Flash Freeze
+          Quick, single target, long-range, high-chill.
+      Holy
+        Very fast, easy to aim, but low DPS and flinch.
+        Also includes healing spells
+        Heal
+          Heals one target player.
+        Lifebind
+          Heals one target player, and the caster.
+        Prayer
+          Heals one target player, and all players within an AoE around them.
+        Lifewell
+          Places a healing AoE zone under the target player.
+        Renewal
+          Heals the target over time.
+        Mending
+          Smart heal.
+          Automatically heals the lowest-HP ally in range.
+        Holy Bolts
+          A channeled volley of up to four holy bolts.
+          Consumes MP per bolt fired. First bolt costs more MP than the others.
+          Damages an enemy, or heals a player.
+          Overkill/overhealing will pierce.
+        Sunlance
+          Sky beam, single target, no-miss.
+          Slight warning animation/delay before strike.
+        Solar Flare
+          AoE circle around player. Low damage, high flinch.
+      Dark
+        Instant death effects.
+        Has a change to instantly slay.
+        Death
+          Darkness projectile.
+          Increased slay chance versus living targets.
+        Destruction
+          Darkness sky-bolt.
+          Increased slay chance versus mechanical targets.
+        Doom
+          No-miss.
+          Triggers a countdown before death.
+          Doomed targets explode dealing darkness damage in an AoE when slain before the timer expires.
+          Explosions have FRIENDLY FIRE.
+        Reap
+          Marks ALL targets to explode dealing darkness damage in an AoE when slain.
+          Explosions have FRIENDLY FIRE.
+      Buff/Debuff
+        Grants a temporary bonus lasting a limited time or until the end of the encounter.
+        Affects the entire party.
+        Effects stack from multiple casters, but scale down slightly based on party size.
+        Sharpen
+          Smallish damage-dealt increase.
+        Harden
+          Smallish damage-taken decrease.
+        Weakness
+          Curses all enemies to deal slightly less damage.
+        Frailty
+          Curses all enemies to expire slightly early at 10% rather than 0%.
+        Heroism
+          Significant damage / speed buff, but VERY expensive.
+        Barrier
+          Prevents up to X total damage taken by the party within the next Y seconds.
+        
+
+
+
+
+Races
+  Human
+    Can use some magic.
+    MP refills fully after each encounter, but only enough MP for a very small number of at-level spells.
+    (Balance notes) Make sure the spells are powerful enough to merit their use, but not so powerful that they outshine the Force class.
+  Elf
+    Can use some magic, and gets access to more spells than humans.
+    Two MP bars. The first MP bar is smaller, and only holds enough MP for a very small number of at-level spells. (100% more than Humans.)
+    The second MP bar is slowly consumed to refill the first MP bar while it is below 33%.
+    The first MP bar fully refills after each encounter.
+    The second MP bar is considered a depletable resource.
+  Android
+    Increased max HP.
+    Max HP does not deplete when refilling HP after battle, instead, this consumes Energy.
+    No magic.
+    Instead, has a depletable resource: Energy.
+    The "spell casting" mode toggle is replaced with an "overclock" mode toggle.
+    Overclock Mode
+      Attack speed increased.
+      All attacks deal increased damage, but cost Energy.
+      Ranged attacks can be used while ammo is empty, but cost more Energy.
+      Movement speed increased, but Energy drains while moving.
+      Damage taken reduced, but damage prevented in this way consumes Energy.
+      Overclock mode ends and is unavailable when Energy is empty.

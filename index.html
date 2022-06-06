@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html style="height: 100%; margin: 0;">
+	<head>
+		<meta charset="utf-8">
+		<title>JS Peer-to-Peer Demo</title>
+
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <style>
+      #outgoing {
+        width: 600px;
+        word-wrap: break-word;
+        white-space: normal;
+      }
+    </style>
+
+    <!-- <script src="https://cdn.jsdelivr.net/gh/joeymalvinni/webrtc-ip/dist/bundle.dev.js"></script> -->
+    <!-- above lets you `await getIPs()` -->
+
+    <script src="lib/simplepeer.min.js"></script>
+		<script type="module" src="Main.js"></script>
+	</head>
+
+
+  <body>
+    <form>
+      <textarea id="incoming"></textarea>
+      <button type="submit">submit</button>
+    </form>
+    <pre id="outgoing"></pre>
+  </body>
+
+	<!-- <body>
+    <textarea id="text-box" rows="4" cols="50"></textarea>
+    <button id="send-button">Send</button>
+    <div id="message-log"></div>
+	</body> -->
+</html>
